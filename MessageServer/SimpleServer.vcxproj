@@ -15,12 +15,13 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SimpleServer</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -60,6 +61,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <AdditionalOptions>/std:c++14 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>D:\PersonalProjects\SimpleMessageServer\MessageServer\headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -84,9 +86,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="headers\TempHeader.h" />
+    <ClInclude Include="headers\SimpleServerPCH.h" />
+    <ClInclude Include="headers\SimpleServerShared.h" />
+    <ClInclude Include="headers\SocketAddress.h" />
+    <ClInclude Include="headers\SocketAddressFactory.h" />
+    <ClInclude Include="headers\SocketUtil.h" />
+    <ClInclude Include="headers\StringUtils.h" />
+    <ClInclude Include="headers\TCPSocket.h" />
+    <ClInclude Include="headers\UDPSocket.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\SimpleServerPCH.cpp" />
+    <ClCompile Include="source\SocketAddress.cpp" />
+    <ClCompile Include="source\SocketAddressFactory.cpp" />
+    <ClCompile Include="source\SocketUtil.cpp" />
+    <ClCompile Include="source\StringUtils.cpp" />
+    <ClCompile Include="source\TCPSocket.cpp" />
+    <ClCompile Include="source\UDPSocket.cpp" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

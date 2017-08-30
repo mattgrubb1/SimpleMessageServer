@@ -14,12 +14,13 @@ workspace "SimpleMessageServer"
 
   filter { }
 
-project "SimpleServer"
+project "MessageServer"
   kind "ConsoleApp"
   language "C++"
   location "MessageServer"
   targetdir "bin/%{cfg.buildcfg}"
   flags { "C++14" }
   files { "MessageServer/headers/**.h", "MessageServer/source/**.cpp" }
-
+  pchheader "SimpleServerPCH.h"
+  includedirs { "MessageServer/headers"}
   
