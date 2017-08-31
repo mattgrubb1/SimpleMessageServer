@@ -3,7 +3,7 @@
 -- premake5.lua
 workspace "SimpleMessageServer"
   location "./"
-  architecture "x64"
+  architecture "x86_64"
   configurations { "Debug", "Release" }
 
   filter "configurations:Debug"
@@ -15,12 +15,18 @@ workspace "SimpleMessageServer"
   filter { }
 
 project "MessageServer"
-  kind "ConsoleApp"
+  kind "WindowedApp"
   language "C++"
   location "MessageServer"
   targetdir "bin/%{cfg.buildcfg}"
-  flags { "C++14" }
-  files { "MessageServer/headers/**.h", "MessageServer/source/**.cpp" }
+  cppdialect "C++14"
+  characterset("MBCS")
+  files { "MessageServer/source/SimpleServerPCH.cpp",
+          "MessageServer/headers/SimpleServerPCH.h",
+          "MessageServer/headers/**.h",
+          "MessageServer/source/**.cpp" }
   pchheader "SimpleServerPCH.h"
-  includedirs { "MessageServer/headers"}
+  pchsource "MessageServer/source/SimpleServerPCH.cpp"
+  includedirs { "MessageServer/headers", "MessageServer/source"}
+  links { "Ws2_32.lib" }
   
