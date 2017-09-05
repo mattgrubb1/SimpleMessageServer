@@ -83,9 +83,5 @@ int TCPSocket::Receive(void* inData, int inLen)
 
 TCPSocket::~TCPSocket()
 {
-#if _WIN32
 	closesocket(mSocket);
-#else
-	close(mSocket);
-#endif
 }

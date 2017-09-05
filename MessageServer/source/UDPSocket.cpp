@@ -74,9 +74,5 @@ int UDPSocket::ReceiveFrom(void* inToReceive, int inMaxLength, SocketAddress& ou
 
 UDPSocket::~UDPSocket()
 {
-#if _WIN32
 	closesocket(mSocket);
-#else
-	close(mSocket);
-#endif
 }
